@@ -1,0 +1,55 @@
+
+<% content_for :header do %>
+<section class="hero is-link">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title" , style="color:white; font-size: 40px;">
+        Browse the latest gadgets
+      </h1>
+    </div>
+  </div>
+</section>
+<% end %>
+
+
+<div class="seller-index-grid pt4">
+  <!-- main web page where gadgets will be displayed -->
+
+  <% @sellers.each do |seller| %>
+
+    <div class="seller border-light">
+      <div class="seller-thumb" >
+        <%= link_to image_tag(seller.image_url(:thumb)), seller %>
+      
+       
+      <% if seller.condition? %>
+        <div class="condition">
+          <span class="tag is-dark" ><%= seller.condition %></span>
+        </div>
+      </div>
+      <% end %>
+      
+
+
+
+    <div class="pa3">
+
+      <h3 class="fw7 f4 category"><%= link_to seller.brand, seller %>  <%= link_to seller.model, seller %>    <%= link_to seller.category, seller %></h3>
+
+      <p class="has-text-gray fg pt1">Sold By <%= seller.user.name %></p>
+
+      <p class="f3 fw6 has-text-right pt2 price">Rs.<%= seller.price %></p>
+
+      
+      <% if user_signed_in? && seller.user_id ==  current_user.id %>
+         <%= link_to 'Edit', edit_seller_path(seller), class: "button is-light" %>
+         <%= link_to 'Delete', seller, method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-light" %>
+         <% end %>
+      
+
+    </div>
+  </div>
+  <% end %>
+  
+</div>
+

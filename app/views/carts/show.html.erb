@@ -1,0 +1,25 @@
+
+
+<div class="keep-shopping pv1 mt4 has-text-right">
+  <%= link_to 'Keep Shopping', sellers_path, class: 'button is-link' %>
+</div>
+<hr />
+<section class="section">
+  <%= render(@cart.cart_items) %>   <!-- links to _cart_items.html.erb...things get much for neat -->
+
+  <div class="columns">
+    <div class="column">
+      <br>
+      <br>
+      <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "button is-danger" %>
+    </div>
+
+    <div class="column total has-text-right">
+      <h4 class="title is-4">
+        <br>
+        <br>
+        <span class="f5 has-text-grey">Total:</span> Rs.<%=(@cart.total_price) %>
+      </h4>
+    </div>
+  </div>
+</section>

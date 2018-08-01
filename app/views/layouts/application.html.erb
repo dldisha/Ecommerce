@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ecommerce</title>
+    <%= csrf_meta_tags %>
+	
+<style>
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+</style>
+<%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<div>
+ 		<div id="common-header">
+  		<div class="logo">
+              <img width="200"  src="http://www.doublemhorses.com/images/horses/cesar_de_bneville.jpg">
+  		</div>
+
+      <div class="app-name">
+        <h1>MOMENTUM</h1>
+      </div>
+
+
+
+
+
+<div class="auth-info-links">
+
+
+    <% if cart_has_items %>
+              <%= link_to cart_path(@cart), class:"navbar-item button is-info " do %>
+              <span class="icon is-small">
+                <i class="fa fa-shopping-cart"></i>
+              </span>
+              <span>Cart
+                <%= cart_count_over_one %>  <!-- function defined in helper -->
+                </span>
+              <% end %>
+            <% end %>
+
+
+            <% if user_signed_in? %>
+         
+              <%= link_to 'Sell', new_seller_path, class: "navbar-item button is-light" %>
+
+              <div class="navbar-item has-dropdown is-hoverable">
+                <div class="acc"><%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>
+                <div class="navbar-dropdown is-right">
+                  <%= link_to "Edit Account", edit_user_registration_path, class:"navbar-item" %>
+                  <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
+                </div>
+              </div>
+            </div>
+            <% else %>
+
+            <%= link_to "Sign In", new_user_session_path, class:"navbar-item button is-primary" %>
+            <%= link_to "Sign up", new_user_registration_path, class:"navbar-item button is-primary"%>
+
+            <% end %>
+          </div>
+
+
+  		
+  	
+
+
+  	
+
+  	</div>
+    <%= yield(:header) %>
+      <div class="container">   
+
+    <%= yield %>
+  </body>
+</html>

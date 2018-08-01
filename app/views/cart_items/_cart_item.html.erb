@@ -1,0 +1,37 @@
+
+
+
+<div class="columns align-items-center">
+ 
+  <div class="column is-2">
+    <figure class="is-128x128 image">
+      <%= image_tag(cart_item.seller.image_url(:thumb)) %>
+    </figure>
+  </div>
+  <div class="column is-9">
+    <strong><%= cart_item.seller.brand %>  <%= cart_item.seller.model %>  <%= cart_item.seller.category %></strong>
+    <div class="columns align-items-center">
+      <div class="content column is-9">
+        <div class="f6">
+        <%= cart_item.seller.color %> <br>
+        Warranty: <%= cart_item.seller.warranty %> 
+        <br>
+        <br>
+        <br>
+        
+      </div>
+      Qunatity: <%= cart_item.quantity %>
+        
+      </div>
+      <div class="column is-3 has-text-right">
+        <strong class="f4">Rs.<%=(cart_item.total_price) %></strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="has-text-right">
+  <%= link_to 'Remove Item', cart_item, method: :delete, data: { confirm: "Are you sure? " }, class: "button is-normal mb4" %>
+</div>
+
+<hr>

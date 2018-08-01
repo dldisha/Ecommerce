@@ -1,0 +1,134 @@
+<% content_for :body_class, 'bg-light' %>
+
+<section class="section seller-show">
+  <div class="columns" >
+  <div class="column is-two-fifths" style="position:relative">
+      <div class="feature-image"  >
+        <%= image_tag(@seller.image_url(:default)) %>
+      </div>
+    
+        
+              
+              <div class="control has-icons-left">
+      <%= button_to 'Add to cart', cart_items_path(seller_id: @seller), class: 'button is-link add-to-cart' %>
+              
+                <span class="icon is-small is-left">
+                  <i class="fa fa-shopping-cart"></i>
+                </span>
+              </div>
+            <br>
+
+             <div class="control has-icons-left">
+      <%= button_to 'Talk to Seller', '#', class: 'button is-info add-to-cart' %>
+              
+                <span class="icon is-small is-left">
+                  <i class="fa fa-comments"></i>
+                </span>
+              </div>
+     
+  </div>
+
+  
+
+  <div class="column">
+     <ul class="pv1">
+        <% if @seller.brand? %>
+        <li class="inline-block pr3 f2"><%= @seller.brand %></li>
+        <% end %>
+
+
+    <li class="inline-block pr3 f2"><%= @seller.model %></li>
+    <li class="inline-block pr3 f2"><%= @seller.category %></li>
+    <br>
+    <br>
+    <br>
+    <li class="inline-block pr3 f2"><strong>Rs. <%= @seller.price %></strong></li>
+<br>
+<br>
+<br>
+<br>
+    <li class="align-left f4">Warranty: <%= @seller.warranty %></li>
+    <br>
+    <br>
+    <li class="align-left f4">Seller:  <%= @seller.user.name %></li>
+    <br>
+    <br>
+    <li class="align-left f4">Description:  
+      <div style="color:#17202A; text-align: left; font-size:18px; padding-left: 30px;" >
+      <%= @seller.description %>
+    </div>
+  </li>
+  
+  <br>
+  <br>
+
+  <div class="column" style="border:1px solid #D7DBDD ">
+  <li class="inline-block pr3 f3"><strong>Specifications: </strong></li>
+  <br>
+  <br>
+  <table class="table is-narrow">
+        <% if @seller.condition %>
+        <tr>
+          <td class="has-text-weight-bold">Condition:</td>
+          <td><%= @seller.condition %></td>
+        </tr>
+        <% end %>
+
+       
+
+        <% if @seller.brand %>
+          <tr>
+            <td class="has-text-weight-bold">Brand:</td>
+            <td><%= @seller.brand %></td>
+          </tr>
+        <% end %>
+
+        <% if @seller.model %>
+          <tr>
+            <td class="has-text-weight-bold">Model:</td>
+            <td><%= @seller.model %></td>
+          </tr>
+        <% end %>
+
+          <% if @seller.color %>
+          <tr>
+            <td class="has-text-weight-bold">Color:</td>
+            <td><%= @seller.color %></td>
+          </tr>
+        <% end %>
+
+      </table>
+    </div>
+<br>
+<br>
+
+    <div class="column" style="border:1px solid #D7DBDD ">
+  <li class="inline-block pr3 f3"><strong>Rating and Review: </strong></li>
+
+
+
+    </div>
+<br>
+<br>
+ <div class="column" style="border:1px solid #D7DBDD ">
+  <li class="inline-block pr3 f3"><strong>Question And Answer: </strong></li>
+
+
+
+    </div>
+
+ </div>
+</ul>
+     <% if user_signed_in? && @seller.user_id ==  current_user.id %>
+         <%= link_to 'Edit', edit_seller_path(@seller), class: 'button is-link' %>
+         <%end%>
+
+
+
+       </div>
+
+</section>
+
+
+
+

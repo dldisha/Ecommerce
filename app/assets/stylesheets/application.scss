@@ -1,0 +1,117 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ 
+
+
+ @import "bulma";
+
+@import "functions";
+
+  
+
+
+ #common-header{
+
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 12px 0 85px -4px #566573;
+    height: 150px;
+       
+       .logo{
+       width:30%;
+       text-align: left;
+
+    }
+
+    .app-name{
+    font-family: 'Josefin Sans', sans-serif;
+
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: bold;
+    margin-top: 35px;
+    margin-left: 100px;
+    color:#2325E7  ;
+    
+    font-size: 50px;
+    }
+
+    .auth-info-links{
+        width: 40%;
+        text-align: right;
+        display: flex;
+        justify-content: flex-end;
+        p:first-child{
+        margin-right: 18px;
+        margin-top: 20px;
+        margin-left: 20px;
+
+        }
+
+        acc{
+         background: #45B39D;
+        margin-bottom: 45px;
+        border-radius: 8px;
+        }
+
+    }
+}
+
+
+.seller-index-grid {
+  display: grid;
+  grid-gap: 50px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+
+  .seller {
+    border-left: 4px;
+    border-top: 0;
+    position: relative;
+    min-height: 295px;
+
+    .category {
+      line-height: 1.6rem;
+    }
+    .price {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
+  }
+
+  .seller-thumb {
+    position: relative;
+    max-height: 150px;
+    overflow: hidden;
+
+    img {
+      max-width: 100%;
+      width: 100%;
+      &:hover {
+        opacity: .9;
+      }
+    }
+
+    .condition {
+      position: absolute;
+      bottom: 10px;
+      right: 9px;
+    }
+  }
+}
+
+
