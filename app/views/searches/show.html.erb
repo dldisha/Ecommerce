@@ -1,41 +1,28 @@
-
 <% content_for :header do %>
-<section class="hero is-link">
+<section class="hero is-danger">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title" , style="color:white; font-size: 40px;">
-        Browse the latest gadgets 
-<div style="margin-left:740px; margin-top:-55px" >
-  <%= form_for sellers_path, :method => 'get' do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Category" %>
-  <%=submit_tag "Search" %>
-  <% end %>
-
-</div>
-
-
-
-<div style="margin-left:1000px;">
-<p><%= link_to "Advanced Search", new_search_path %></p>
-</div>
-
-      
-
+      <h1 class="title" , style="color:white; font-size: 40px">
+        Search Results
       </h1>
-  
-
     </div>
-
   </div>
 </section>
 <% end %>
+
+	
+
+
+<% if @search.search_sellers.empty? %>
+<p>No Record Found </p>
+<% else %>
 
 
 
 <div class="seller-index-grid pt4">
   <!-- main web page where gadgets will be displayed -->
 
-  <% @sellers.each do |seller| %>
+  <% @search.search_sellers.each do |seller| %>
 
     <div class="seller border-light">
       <div class="seller-thumb" >
@@ -61,10 +48,7 @@
       <p class="f3 fw6 has-text-right pt2 price">Rs.<%= seller.price %></p>
 
       
-      <% if user_signed_in? && seller.user_id ==  current_user.id %>
-         <%= link_to 'Edit', edit_seller_path(seller), class: "button is-light" %>
-         <%= link_to 'Delete', seller, method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-light" %>
-         <% end %>
+    
       
 
     </div>
@@ -73,3 +57,19 @@
   
 </div>
 
+  
+
+	<% end %>
+	
+
+
+
+		<div class="field column is-4">
+		<div class="control">
+	<div class="button is-info" style="color: #FF0000;" >
+	<%= link_to 'Back', new_search_path %>
+
+
+</div>
+</div>
+</div>

@@ -4,7 +4,13 @@ class SellersController < ApplicationController
 
   
   def index
+    if params[:search]
+      # @sellers = Seller.where("brand LIKE ?", "%#{params[:search]}")
+      @sellers = Seller.where("category LIKE ?", "%#{params[:search]}%")
+    else
     @sellers = Seller.all.order("created_at desc")
+  end
+    
   end
 
   

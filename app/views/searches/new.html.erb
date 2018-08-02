@@ -1,0 +1,71 @@
+<% content_for :header do %>
+<section class="hero is-danger">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title" , style="color:white; font-size: 40px">
+        Advanced Search
+      </h1>
+    </div>
+  </div>
+</section>
+<% end %>
+
+
+<%= form_for @search do |f| %>
+   <div class="field column is-4">
+            <div class="control">
+              <label class="label">Category</label>
+              <div class="control has-icons-left">
+                
+                  <%= f.text_field :category%>
+                
+          
+              </div>
+            </div>
+           </div>
+	 <div class="field column is-4">
+            <div class="control">
+              <label class="label">Brand</label>
+              <div class="control has-icons-left">
+                
+                  <%= f.text_field :brand, prompt: "Select brand" %>
+                
+          
+              </div>
+            </div>
+           </div>
+
+            <div class="field column is-4">
+            <div class="control">
+              <label class="label">Price Range</label>
+              <div class="control has-icons-left">
+                <%= f.text_field :min_price, size: 7 , placeholder: "Min Price" %> &nbsp -  &nbsp
+		<%= f.text_field :max_price, size: 7 , placeholder: "Max Price"%>
+                  
+                
+          
+              </div>
+            </div>
+           </div>
+
+
+            <div class="field column is-4">
+            	
+          <div class="control">
+
+            
+	<div class="actions"><%= f.submit "Search", class: 'button is-link' %></div>
+           
+          </div>
+          <div class="button is-info" style="color:white; ">
+	<%= link_to 'Back', sellers_path %>
+        </div>
+
+
+
+
+
+	<% end %>
+
+</div>
+
