@@ -1,5 +1,17 @@
 {
   "name": "ecommerce",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "version": "1.0.0",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": " "
+  },
+  "author": "Disha",
+  "license": "ISC"
+ 
 }

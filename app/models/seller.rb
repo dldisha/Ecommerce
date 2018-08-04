@@ -5,6 +5,8 @@ class Seller < ApplicationRecord
 	has_many :cart_items
     mount_uploader :image, ImageUploader #uploading image
 	serialize :image, JSON  #for SQlite
+
+	has_many :comments, dependent: :destroy
 	
 
 	validates  :category, :model, :brand, :price, presence: true

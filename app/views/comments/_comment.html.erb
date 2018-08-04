@@ -1,0 +1,19 @@
+
+<div style="margin-left: 15px;">
+
+ 
+
+<strong><%= comment.body %><br></strong>
+<%= time_ago_in_words(comment.created_at) %> Ago<br>
+
+
+     <% if user_signed_in? && @seller.user_id ==  current_user.id %>
+
+<div style="margin-top: -17px; margin-left: 190px;">
+<%= link_to "delete" , [comment.seller,comment] , method: :delete, data: {confirm: "Are You Sure ?"} %>
+</div>
+
+<%end%>
+
+</div>
+

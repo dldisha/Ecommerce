@@ -1,3 +1,72 @@
+<style>
+
+.comments{
+    background: #E59866;
+          opacity: 1;
+          border-radius: 18px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          margin-right: 500px;
+          text-align:center;
+
+}
+
+
+#myDIV {
+}
+    #user-chat-box{
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 1px solid grey;
+    height: 350px;
+    width: 300px;
+  }
+     #chat-messages-list{
+      list-style: none;
+      padding: 10px;
+      height: 83%;
+      background-color: white;
+      overflow: auto;
+    }
+      .other-message{
+        text-align: left;
+        padding: 5px;
+      }
+      
+
+          
+
+.self-message{
+        text-align: right;
+        padding: 5px;
+      }
+       
+               
+      
+    #chat-message-input-container{
+          height: 30%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+      }
+        #msg{
+            height: 50%;
+          width: 70%;
+        }
+        #send{
+            height: 50%;
+          width: 30%;
+          font-size: 25px;
+          color: white;
+          border: none;
+          background:#1AABEE  ;
+        }
+      
+
+</style>
+
+
 <% content_for :body_class, 'bg-light' %>
 
 <section class="section seller-show">
@@ -19,14 +88,39 @@
             <br>
 
              <div class="control has-icons-left">
-      <%= button_to 'Talk to Seller', '#', class: 'button is-info add-to-cart' %>
+      <button onclick="myFunction()"  class='button is-info add-to-cart'  >Talk to Seller</button> 
+
+
               
                 <span class="icon is-small is-left">
                   <i class="fa fa-comments"></i>
                 </span>
+                <div id="myDIV">
+    <% if user_signed_in? %>
+      <div id="user-chat-box">
+        <ul id="chat-messages-list">
+          <li class="other-message">
+            <span style="background-color:#F3AD87  ;">
+            Other Message</span>
+          </li>
+          <li class="self-message">
+            <span style=" background-color: #BBF5CF  ;">
+              Self Message
+            </span>
+            
+          </li>
+         </ul>
+        <div id="chat-message-input-container">
+          <input id="msg" placeholder="Type message here">
+          <button id="send"><i class="fa fa-paper-plane""></i></button>
+        </div>
+       </div>
+    <% end %>
+</div>
               </div>
+            </div>
      
-  </div>
+
 
   
 
@@ -104,18 +198,25 @@
 
     <div class="column" style="border:1px solid #D7DBDD ">
   <li class="inline-block pr3 f3"><strong>Rating and Review: </strong></li>
+  
+  <hr>
+  <div style="background-color: #EAECEE;  border-radius:20px; display:block;">
+  <%= render @seller.comments %>
+  
+
+</div>
+
+<br>
+<strong><p class="comments">Add Review</p></strong><br>
+  
+  <%= render "comments/form" %>
 
 
 
     </div>
 <br>
 <br>
- <div class="column" style="border:1px solid #D7DBDD ">
-  <li class="inline-block pr3 f3"><strong>Question And Answer: </strong></li>
 
-
-
-    </div>
 
  </div>
 </ul>
