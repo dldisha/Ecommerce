@@ -1,5 +1,5 @@
 class CartItemsController < ApplicationController
-  include CurrentCart #to update hte cart(concerns)
+  include CurrentCart #to update the cart(concerns)
   before_action :set_cart_item, only: [:show, :edit, :update, :destroy]
   before_action :set_cart, only: [:create]
 

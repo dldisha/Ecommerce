@@ -1,9 +1,15 @@
+require 'sidekiq/web'
+
+
 Rails.application.routes.draw do
 
-  	resources :chats
+   resources :conversations do   #every convo has a msg..routes will be convo/msg/id/create
+    resources :messages
+  end
+
   resources :cart_items
   resources :carts
-  resources :sellers do
+  resources :sellers do   #each seller item has/may have comments
     resources :comments
   end
   resources :searches
@@ -13,7 +19,7 @@ Rails.application.routes.draw do
   }
   root 'sellers#index'   #store..earlier
 
-  mount ActionCable.server => "/cable"
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

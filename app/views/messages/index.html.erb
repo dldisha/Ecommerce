@@ -1,0 +1,65 @@
+<style>
+
+  
+       
+    
+</style>
+
+
+
+
+
+<div id="user-chat-box">
+  <br>
+
+
+
+  
+<h1 class="title is-4">Message <%= @conversation.recipient.name %></h1>
+
+
+<% if @over_ten %>
+  <%= link_to "Show Previous Messages", '?m=all', class:'button is-link' %>
+  <br>
+<% end %>
+
+
+<section id="messages" class="mb4">
+  <% @messages.each do |message| %>
+    <% if message.body %>
+      <% user = User.find(message.user_id) %>
+      <article class="message is-dark">
+        <div class="message-body">
+          <div class="inline-block nudge-down-10 pr2"><%= gravatar_for user, size: 30 %></div>
+          <div class="inline-block"><p style="color:#2980B9  ; font-size:15px;"><strong><%= user.name %>: </strong></p> <p style="font-size:38px;"><strong><%= sanitize markdown_to_html(message.body) %></strong></p></div> <p style="color:#808B96  ;"> <%= message.created_at.strftime(" %B %d, %Y at %H:%M") %></p>
+          
+          
+         
+        </div>
+      </article>
+    <% end %>
+  <% end %>
+</section>
+
+<%= form_for [@conversation, @message] do |f| %>
+  <%= f.text_area :body, class: "textarea", placeholder: "Inquire about the product...", rows: "3", cols: "1"  %>
+  <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+  <div class="text-align-right">
+    <%= f.submit "Send Message", class: "button is-link is-medium mt3" %>
+
+
+
+  </div>
+
+  <div class="keep-shopping pv1  has-text-right" style="margin-top: -45px;">
+  <%= link_to 'Keep Shopping', sellers_path, class: 'button is-link is-medium ' %>
+</div>
+
+  <div class="keep-shopping pv1  has-text-right" style="margin-top: 15px;">
+  <%= link_to 'To Your Conversations', conversations_path, class: 'button is-link is-medium ' %>
+</div>
+
+
+
+
+<% end %>

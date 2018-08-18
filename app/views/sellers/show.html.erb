@@ -10,60 +10,6 @@
           text-align:center;
 
 }
-
-
-#myDIV {
-}
-    #user-chat-box{
-    position: fixed;
-    bottom: 0;
-    right: 15px;
-    border: 1px solid grey;
-    height: 350px;
-    width: 300px;
-  }
-     #chat-messages-list{
-      list-style: none;
-      padding: 10px;
-      height: 83%;
-      background-color: white;
-      overflow: auto;
-    }
-      .other-message{
-        text-align: left;
-        padding: 5px;
-      }
-      
-
-          
-
-.self-message{
-        text-align: right;
-        padding: 5px;
-      }
-       
-               
-      
-    #chat-message-input-container{
-          height: 30%;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-      }
-        #msg{
-            height: 50%;
-          width: 70%;
-        }
-        #send{
-            height: 50%;
-          width: 30%;
-          font-size: 25px;
-          color: white;
-          border: none;
-          background:#1AABEE  ;
-        }
-      
-
 </style>
 
 
@@ -75,50 +21,45 @@
       <div class="feature-image"  >
         <%= image_tag(@seller.image_url(:default)) %>
       </div>
+
+       
+
     
-        
+          <div class="control has-icons-left">
               
-              <div class="control has-icons-left">
+      <% if user_signed_in? && current_user.id != @seller.user_id %>
+      <%= button_to "Talk To Seller", conversations_path(sender_id: current_user.id, recipient_id: @seller.user.id), method: 'post', class:"button is-info add-to-cart" %>
+       <span class="icon is-small is-left">
+                  <i class="fa fa-comments"></i>
+                </span>
+    <% elsif user_signed_in? && current_user.id == @seller.user_id  %>
+      <%= link_to "Your Conversations", conversations_path , class:"button is-success add-to-cart"%>
+      <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+    <% else %>
+
+    <%= link_to "Sign up to message #{@seller.user.name}", new_user_registration_path %>
+    <% end %>
+
+      
+
+  </div>
+            
+
+            
+              <br>
+              
+                 <div class="control has-icons-left">
       <%= button_to 'Add to cart', cart_items_path(seller_id: @seller), class: 'button is-link add-to-cart' %>
               
                 <span class="icon is-small is-left">
                   <i class="fa fa-shopping-cart"></i>
                 </span>
               </div>
-            <br>
-
-             <div class="control has-icons-left">
-      <button onclick="myFunction()"  class='button is-info add-to-cart'  >Talk to Seller</button> 
-
-
               
-                <span class="icon is-small is-left">
-                  <i class="fa fa-comments"></i>
-                </span>
-                <div id="myDIV">
-    <% if user_signed_in? %>
-      <div id="user-chat-box">
-        <ul id="chat-messages-list">
-          <li class="other-message">
-            <span style="background-color:#F3AD87  ;">
-            Other Message</span>
-          </li>
-          <li class="self-message">
-            <span style=" background-color: #BBF5CF  ;">
-              Self Message
-            </span>
-            
-          </li>
-         </ul>
-        <div id="chat-message-input-container">
-          <input id="msg" placeholder="Type message here">
-          <button id="send"><i class="fa fa-paper-plane""></i></button>
-        </div>
-       </div>
-    <% end %>
-</div>
-              </div>
-            </div>
+
+               </div>
      
 
 
