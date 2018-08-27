@@ -5,12 +5,15 @@
     <div class="container">
       <h1 class="title" , style="color:white; font-size: 40px;">
         Browse the latest gadgets 
+
+        
+
 <div style="margin-left:740px; margin-top:-55px" >
   <%= form_for sellers_path, :method => 'get' do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search Category" %>
   <%=submit_tag "Search" %>
   <% end %>
-
+  
 </div>
 
 

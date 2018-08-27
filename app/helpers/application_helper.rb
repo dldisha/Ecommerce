@@ -22,8 +22,6 @@ module ApplicationHelper
     Kramdown::Document.new(text, input: "GFM").to_html
   end
 
-  def trade_author(trade)
-    user_signed_in? && current_user.id == trade.user_id
-  end
+  
 
 end
