@@ -67,3 +67,4 @@ gem "font-awesome-rails"
 gem "jquery-rails"
 gem 'sidekiq'
 gem 'kramdown'
+gem 'pg'
