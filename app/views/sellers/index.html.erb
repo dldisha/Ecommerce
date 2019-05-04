@@ -42,7 +42,7 @@
 
     <div class="seller border-light">
       <div class="seller-thumb" >
-        <%= link_to image_tag(seller.image_url(:thumb)), seller %>
+        <%= link_to image_tag(seller.image_url(:thumb)) unless seller.image.blank? %>
       
        
       <% if seller.condition? %>
