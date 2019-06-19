@@ -9,7 +9,16 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
+group :production do
+  gem 'pg'
+end
+
+group :development do
+  gem 'sqlite3'
+end    
+
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -67,4 +76,3 @@ gem "font-awesome-rails"
 gem "jquery-rails"
 gem 'sidekiq'
 gem 'kramdown'
-gem 'pg'
